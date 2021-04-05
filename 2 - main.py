@@ -40,18 +40,15 @@ for i in range(len(palavras)):
     if (i < len(selecionadas)):
         f.write("\n<details>")
 
-        print(f'{selecionadas[i]}')
         f.write(f'\n    <summary>{selecionadas[i]}</summary>\n')
 
         phonetic = p.convert(selecionadas[i])
-        print(f'    /{phonetic}/')
         f.write(f'\n    /{phonetic}/\n')
 
         trans = Translator()
         t = trans.translate(
             selecionadas[i], src='en', dest='pt'
         )
-        print(f'\n    {t.text}')
         f.write(f'\n    {t.text}\n')
 
         req = Request(
@@ -71,11 +68,9 @@ for i in range(len(palavras)):
 
         for container in range(2, limit):
             english = english_container[container].text
-            print(f"\n    " + english.strip())  # limapando as strings
-            f.write(f"\n    " + english.strip() + "\n")
+            f.write(f"\n    " + english.strip() + "\n") # limapando as strings
 
             portuguese = portuguese_container[container].text
-            print(f"\n    " + portuguese.strip())
             f.write(f"\n    " + portuguese.strip() + "\n")
         f.write("\n</details>")
     else:
@@ -83,11 +78,9 @@ for i in range(len(palavras)):
 
 fNT.write("<details>" + "\n")
 
-print(f'Não serão Consideradas:')
 fNT.write(f'    <summary>Não serão Consideradas:</summary>\n')
 
 for index in range(len(não_selecionadas)):
-    print(f'\n    {não_selecionadas[index]}')
     fNT.write(f'\n    {não_selecionadas[index]}\n')
 
 fNT.write("\n</details>")
