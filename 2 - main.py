@@ -5,7 +5,7 @@ from googletrans import Translator
 
 import io
 
-bancoDePalavras = open("banco.txt", 'r', encoding="utf-8")
+bancoDePalavras = open("1 - banco.txt", 'r', encoding="utf-8")
 
 palavras = []
 
@@ -27,9 +27,6 @@ for i in range(len(palavras)):
         não_selecionadas.append(palavras[i])
     else:
         selecionadas.append(palavras[i])
-
-filenameNOT = "Não Formatados.md"
-fNT = open(filenameNOT, "w", encoding="utf-8")
 
 filename = "Formatados.md"
 f = open(filename, "w", encoding="utf-8")
@@ -72,15 +69,16 @@ for i in range(len(palavras)):
 
             portuguese = portuguese_container[container].text
             f.write(f"\n    " + portuguese.strip() + "\n")
+        f.write(f'\n    https://context.reverso.net/traducao/ingles-portugues/{selecionadas[i]}')
         f.write("\n</details>")
     else:
         break
 
-fNT.write("<details>" + "\n")
+f.write("<details>" + "\n")
 
-fNT.write(f'    <summary>Não serão Consideradas:</summary>\n')
+f.write(f'    <summary>Não serão Consideradas:</summary>\n')
 
 for index in range(len(não_selecionadas)):
-    fNT.write(f'\n    {não_selecionadas[index]}\n')
-
-fNT.write("\n</details>")
+    f.write(f'\n    {não_selecionadas[index]}\n')
+    f.write(f'    https://context.reverso.net/traducao/ingles-portugues/{não_selecionadas[index]}\n')
+f.write("\n</details>")
