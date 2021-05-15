@@ -69,16 +69,20 @@ for i in range(len(palavras)):
 
             portuguese = portuguese_container[container].text
             f.write(f"\n    " + portuguese.strip() + "\n")
-        f.write(f'\n    https://context.reverso.net/traducao/ingles-portugues/{selecionadas[i]}')
-        f.write("\n</details>")
+        f.write("\n</details>\n")
+        f.write(f'\n[mais...](https://context.reverso.net/traducao/ingles-portugues/{selecionadas[i]})\n')
     else:
         break
 
-f.write("<details>" + "\n")
-
-f.write(f'    <summary>Não serão Consideradas:</summary>\n')
+f.write(f'\n<h2>Não serão Consideradas:</h2>\n')
 
 for index in range(len(não_selecionadas)):
-    f.write(f'\n    {não_selecionadas[index]}\n')
-    f.write(f'    https://context.reverso.net/traducao/ingles-portugues/{não_selecionadas[index]}\n')
-f.write("\n</details>")
+    f.write(f'\n{não_selecionadas[index]}\n')
+    
+    t = trans.translate(
+            não_selecionadas[index], src='en', dest='pt'
+        )
+    
+    f.write(f'\n{t.text}\n')
+
+    f.write(f'\n[mais...](https://context.reverso.net/traducao/ingles-portugues/{não_selecionadas[index]})\n')
