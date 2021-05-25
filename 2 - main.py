@@ -86,3 +86,4 @@ for index in range(len(não_selecionadas)):
     f.write(f'\n{t.text}\n')
 
     f.write(f'\n[mais...](https://context.reverso.net/traducao/ingles-portugues/{não_selecionadas[index]})\n')
+    f.write(f'\n<hr>\n')
