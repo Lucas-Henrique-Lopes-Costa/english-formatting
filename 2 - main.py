@@ -79,9 +79,10 @@ f.write(f'\n<h2>Não serão Consideradas:</h2>\n')
 for index in range(len(não_selecionadas)):
     f.write(f'\n{não_selecionadas[index]}\n')
     
+    trans = Translator()
     t = trans.translate(
-            não_selecionadas[index], src='en', dest='pt'
-        )
+        não_selecionadas[index], src='en', dest='pt'
+    )
     
     f.write(f'\n{t.text}\n')
 
