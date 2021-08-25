@@ -77,14 +77,18 @@ for i in range(len(palavras)):
 f.write(f'\n<h2>Não serão Consideradas:</h2>\n')
 
 for index in range(len(não_selecionadas)):
-    f.write(f'\n{não_selecionadas[index]}\n')
+    f.write("\n<details>")
+
+    f.write(f'\n    <summary>{não_selecionadas[index]}</summary>\n')
     
     trans = Translator()
     t = trans.translate(
         não_selecionadas[index], src='en', dest='pt'
     )
     
-    f.write(f'\n{t.text}\n')
+    f.write(f'\n    {t.text}\n')
+    
+    f.write("\n</details>\n")
 
     f.write(f'\n[mais...](https://context.reverso.net/traducao/ingles-portugues/{não_selecionadas[index]})\n')
     f.write(f'\n<hr>\n')
