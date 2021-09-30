@@ -10,7 +10,7 @@ bancoDePalavras = open("1 - banco.txt", 'r', encoding="utf-8")
 palavras = []
 
 for line in bancoDePalavras:
-    palavra = line.replace('-', '').strip()
+    palavra = line.replace('-', '').replace('**', '').strip()
     palavras.append(palavra)
 
 selecionadas = []
@@ -37,7 +37,7 @@ for i in range(len(palavras)):
     if (i < len(selecionadas)):
         f.write("\n<details>")
 
-        f.write(f'\n    <summary>{selecionadas[i]}</summary>\n')
+        f.write(f'\n    <summary></summary>\n')
 
         phonetic = p.convert(selecionadas[i])
         f.write(f'\n    /{phonetic}/\n')
