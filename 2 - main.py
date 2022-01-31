@@ -37,7 +37,7 @@ for i in range(len(palavras)):
     if (i < len(selecionadas)):
         f.write("\n<details>")
 
-        f.write(f'\n    <summary></summary>\n')
+        f.write(f'\n    <summary>{selecionadas[i].capitalize()}</summary>\n')
 
         phonetic = p.convert(selecionadas[i])
         f.write(f'\n    /{phonetic}/\n')
@@ -46,7 +46,7 @@ for i in range(len(palavras)):
         t = trans.translate(
             selecionadas[i], src='en', dest='pt'
         )
-        f.write(f'\n    {t.text}\n')
+        f.write(f'\n    {selecionadas[i].capitalize()}: {t.text}\n')
 
         req = Request(
             f'https://context.reverso.net/traducao/ingles-portugues/{selecionadas[i]}', headers={'User-Agent': 'Mozilla/5.0'})
