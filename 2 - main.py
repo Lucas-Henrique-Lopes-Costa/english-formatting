@@ -65,12 +65,13 @@ for i in range(len(palavras)):
 
         for container in range(2, limit):
             english = english_container[container].text
-            f.write(f"\n    " + english.strip() + "\n") # limapando as strings
+            f.write(f"\n    " + english.strip() + "\n")  # limapando as strings
 
             portuguese = portuguese_container[container].text
             f.write(f"\n    " + portuguese.strip() + "\n")
         f.write("\n</details>\n")
-        f.write(f'\n[mais...](https://context.reverso.net/traducao/ingles-portugues/{selecionadas[i]})\n')
+        f.write(
+            f'\n[mais...](https://context.reverso.net/traducao/ingles-portugues/{selecionadas[i]})\n')
     else:
         break
 
@@ -80,15 +81,16 @@ for index in range(len(não_selecionadas)):
     f.write("\n<details>")
 
     f.write(f'\n    <summary>{não_selecionadas[index]}</summary>\n')
-    
+
     trans = Translator()
     t = trans.translate(
         não_selecionadas[index], src='en', dest='pt'
     )
-    
+
     f.write(f'\n    {t.text}\n')
-    
+
     f.write("\n</details>\n")
 
-    f.write(f'\n[mais...](https://context.reverso.net/traducao/ingles-portugues/{não_selecionadas[index]})\n')
+    f.write(
+        f'\n[mais...](https://context.reverso.net/traducao/ingles-portugues/{não_selecionadas[index]})\n')
     f.write(f'\n<hr>\n')
